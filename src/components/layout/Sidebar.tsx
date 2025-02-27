@@ -4,6 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import MuiDrawer from "@mui/material/Drawer";
 import { Theme, CSSObject, styled } from "@mui/material/styles";
 import { JSX } from "react";
+import logo from "../../assets/icons/overview/logo.svg"
 
 export const drawerWidth = 250;
 
@@ -44,7 +45,7 @@ const Sidebar = ({ drawer }: { drawer: JSX.Element }) => {
       <DrawerHeader>
         <IconButton>
           <img
-            src={"/src/assets/icons/overview/logo.svg"}
+            src={logo}
             alt="logo"
             width={120}
             height={120}
