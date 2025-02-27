@@ -1,13 +1,12 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "type":"module",
+  "type": "module",
   "description": "",
   "main": "server.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "npx json-server db.json --port 8000"
-
+    "server": "npx json-server db.json --port 8000 --no-static"
   },
   "keywords": [],
   "author": "",
