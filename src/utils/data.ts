@@ -58,29 +58,6 @@ export const navigation = [
   },
 ];
 
-export const recentTransactions = [
-  {
-    type: "withdrawal",
-    amount: "850",
-    date: "28 January 2021",
-    title: "Deposit from my Card",
-    bank:'deposit'
-  },
-  {
-    type: "deposit",
-    amount: "2,500",
-    date: "25 January 2021",
-    title: "Deposit Paypal",
-    bank:'paypal'
-  },
-  {
-    type: "deposit",
-    amount: "5,400",
-    date: "21 January 2021",
-    title: "Jemi Wilson",
-    bank:'jemi'
-  },
-];
 
 export const weeklyStatistics = [
   {
