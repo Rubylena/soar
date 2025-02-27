@@ -6,7 +6,7 @@
   "main": "server.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "npx json-server --omit=dev db.json --port 8000"
+    "server": "npx json-server db.json --port 8000"
 
   },
   "keywords": [],
