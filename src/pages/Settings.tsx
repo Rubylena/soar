@@ -7,7 +7,8 @@ import EditProfile from "../components/settings/EditProfile";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
 import { updateUser } from "../store/slices/userSlice";
-import { toast} from 'react-toastify'
+import { toast } from "react-toastify";
+import { UserInfo } from "../utils/types";
 
 const options = [
   {
@@ -21,31 +22,16 @@ const options = [
   },
 ];
 
-type UserInfo = {
-  name: string;
-  username: string;
-  email: string;
-  presentAddress: string;
-  permanentAddress: string;
-  password: string;
-  city: string;
-  postalCode: string;
-  country: string;
-  DOB: string;
-};
 export default function Settings() {
-
-   const userData = useAppSelector((state) => state.user);
-   const dispatch = useAppDispatch()
+  const userData = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
   const [activeTab, setActiveTab] = useState("Edit Profile");
-  const [image, setImage] = useState<string >(userData.imageUrl);
+  const [image, setImage] = useState<string>(userData.imageUrl);
 
-
- 
-    const handleImageChange = (src: string ) => {
-      setImage(src);
-    };
+  const handleImageChange = (src: string) => {
+    setImage(src);
+  };
 
   const {
     register,
@@ -66,7 +52,7 @@ export default function Settings() {
     },
   });
   const onSubmit: SubmitHandler<UserInfo> = (data) => {
-    const payload ={
+    const payload = {
       name: data.name,
       username: data.username,
       email: data.email,
@@ -76,13 +62,17 @@ export default function Settings() {
       city: data.city,
       postalCode: data.postalCode,
       country: data.country,
-      DOB: data.DOB,
+      DOB: new Date(data.DOB)
+        .toLocaleDateString("en-CA")
+        .split("/")
+        .reverse()
+        .join("-"),
       imageUrl: image,
-    }
-    dispatch(updateUser(payload))
+    };
+    dispatch(updateUser(payload));
 
-    toast.success('Profile updated successfully')
-    }
+    toast.success("Profile updated successfully");
+  };
 
   useEffect(() => {
     dispatch(SetCurrentModule("Setting"));
@@ -140,7 +130,7 @@ export default function Settings() {
               placeholder="type here "
               register={register}
               error={errors?.DOB}
-              type="text"
+              type="date"
             />
             <Input
               label="Present Address"

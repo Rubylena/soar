@@ -46,8 +46,8 @@ const Sidebar = ({ drawer }: { drawer: JSX.Element }) => {
           <img
             src={"/src/assets/icons/overview/logo.svg"}
             alt="logo"
-            width={150}
-            height={150}
+            width={120}
+            height={120}
           />
         </IconButton>
       </DrawerHeader>

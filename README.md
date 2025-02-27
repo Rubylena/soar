@@ -1,50 +1,35 @@
-# React + TypeScript + Vite
+# Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project includes the following datasets stored in a single JSON file:
 
-Currently, two official plugins are available:
+- **Recent Transactions**: Transaction history
+- **Balance History**: User's balance over months
+- **Weekly Statistics**: Withdrawals and deposits per day
+- **Expenses**: Expense categories with values
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This data is served using `json-server` and fetched in a frontend application using `axios`.
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. To install dependencies: 
+   ```bash
+   npm install
+   ```
 
-- Configure the top-level `parserOptions` property like this:
+2. Run the app: 
+   ```bash
+   npm run dev
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+3. To start the local API server: 
+   ```bash
+   npm run server
+   ```
+The server must be on before the running the app to get data to appear on the dashboard.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Features
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Skeleton loader to show loading state
+- Toast component to indicate when an action is successful
+- Edit profile feature to update users' profile
+- Edit user details feature

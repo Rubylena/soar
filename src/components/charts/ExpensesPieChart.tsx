@@ -1,10 +1,33 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import { expenses } from "../../utils/data";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Skeleton from "../reusables/Skeleton";
+import { Expenses } from "../../utils/types";
 
 export default function ExpensePieChart() {
-  const radiusMapping = [150, 130, 170, 140];
-  return (
+  const [expenses, setExpenses] = useState<Expenses[]>([]);
+  const [loading, setLoading] = useState(true);
+  
+  const fetchExpenses = async () => {
+    try {
+      const result = await axios.get("http://localhost:8000/expenses");
+      setExpenses(result.data);
+    } catch (err) {
+      console.log("Error fetching Data:", err);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    }
+  };
+
+  useEffect(() => {
+    fetchExpenses();
+  }, []);
+
+  return loading ? (
+    <Skeleton />
+  ) : (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart width={350} height={400}>
         <Pie
@@ -16,15 +39,7 @@ export default function ExpensePieChart() {
           fill="#8884d8"
           paddingAngle={5}
           dataKey="value"
-          label={({
-            cx,
-            cy,
-            midAngle,
-
-            outerRadius,
-            percent,
-            index,
-          }) => {
+          label={({ cx, cy, midAngle, outerRadius, percent, index }) => {
             const RADIAN = Math.PI / 180;
             const radius = outerRadius * 0.7; // Keep text inside the section
             const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -57,14 +72,10 @@ export default function ExpensePieChart() {
               </g>
             );
           }}
-          labelLine={false} 
+          labelLine={false}
         >
           {expenses.map((entry, index) => (
-            <Cell
-              key={`cell-${index}`}
-            
-              fill={entry.color}
-            />
+            <Cell key={`cell-${index}`} fill={entry.color} />
           ))}
         </Pie>
 

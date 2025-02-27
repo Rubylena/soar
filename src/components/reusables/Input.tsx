@@ -1,23 +1,14 @@
-import {
-  UseFormRegister,
-  FieldError,
-  FieldValues,
-  Path
+import { FieldValues } from "react-hook-form";
+import { Props } from "../../utils/types";
 
-} from "react-hook-form";
-
-
-type Props<T extends FieldValues> = {
-  register: UseFormRegister<T>;
-  name: Path<T>;
-  error?: FieldError;
-
-  label: string;
-  placeholder: string;
-  type: string;
-};
-
-export default function Input<T extends FieldValues>({ name, label, placeholder,type, register, error }: Props<T>) {
+export default function Input<T extends FieldValues>({
+  name,
+  label,
+  placeholder,
+  type,
+  register,
+  error,
+}: Props<T>) {
   return (
     <div>
       <label className=" pb-2" htmlFor={name}>

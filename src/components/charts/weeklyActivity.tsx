@@ -5,19 +5,45 @@ import {
   YAxis,
   CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
 } from "recharts";
-import { weeklyStatistics } from "../../utils/data";
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Skeleton from "../reusables/Skeleton";
 
 export default function WeeklyActivity() {
-  return (
+  const [weeklyData, setWeeklyData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchActivities = async () => {
+    try {
+      const result = await axios.get("http://localhost:8000/weeklyStats");
+      setWeeklyData(result.data);
+    } catch (err) {
+      console.log("Error fetching Data:", err);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    }
+  };
+
+  useEffect(() => {
+    fetchActivities();
+  }, []);
+
+  return loading ? (
+    <Skeleton />
+  ) : (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
         width={500}
         height={300}
-        data={weeklyStatistics}
+        data={weeklyData}
         margin={{
           top: 20,
-          right: 30,
+          right: 10,
           left: 0,
           bottom: 20,
         }}
@@ -37,7 +63,7 @@ export default function WeeklyActivity() {
           stroke="#718EBF"
           tickLine={false}
         />
-
+        <Tooltip />
         {/* Bar with width 15px and rounded top/bottom */}
         <Bar
           dataKey="withdraw"

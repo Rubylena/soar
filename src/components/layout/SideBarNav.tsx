@@ -1,7 +1,6 @@
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
-import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Sidebar, { DrawerHeader, drawerWidth } from "./Sidebar";
@@ -61,7 +60,7 @@ export default function SideBarNav() {
   };
 
   const drawer = (
-    <div className="flex flex-col mt-10  h-full px-2">
+    <div className="flex flex-col md:mt-10  h-full ">
       <List>
         {navigation.map(({ name, link, icon }) => (
           <Tooltip title={name} key={name} placement="right">
@@ -71,6 +70,7 @@ export default function SideBarNav() {
                 sx={{
                   display: "block",
                   color: pathname === link ? "black" : "#B1B1B1",
+
                   mb: 2,
                 }}
                 onClick={() => {
@@ -85,6 +85,7 @@ export default function SideBarNav() {
                     alignItems: "center",
                     gap: "12px", // Added gap between icon and text
                     justifyContent: mobileOpen ? "initial" : "center",
+                    borderLeft: pathname === link ? "5px solid #232323" : "",
                   }}
                 >
                   <ListItemIcon
@@ -103,9 +104,7 @@ export default function SideBarNav() {
                           ? "invert"
                           : ""
                       } ${
-                        pathname !== link && name == "Dashboard"
-                          ? "invert"
-                          : ""
+                        pathname !== link && name == "Dashboard" ? "invert" : ""
                       }`}
                     />
                   </ListItemIcon>
@@ -130,11 +129,11 @@ export default function SideBarNav() {
 
   return (
     <Box>
-      <CssBaseline />
+
       <AppBar
         sx={[
           { zIndex: 100 },
-          { height: {sm:100, xs:120} },
+          { height: { sm: 95, xs: 120 } },
           { boxShadow: "none" },
           { backgroundColor: "white" },
           {
@@ -176,8 +175,8 @@ export default function SideBarNav() {
             <img
               src={"/src/assets/icons/overview/logo.svg"}
               alt="logo"
-              width={100}
-              height={100}
+              width={80}
+              height={80}
             />
           </IconButton>
         </DrawerHeader>

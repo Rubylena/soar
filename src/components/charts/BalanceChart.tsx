@@ -7,15 +7,40 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { balanceHistory } from "../../utils/data";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Skeleton from "../reusables/Skeleton";
+import { Balance } from "../../utils/types";
 
 export default function BalanceChart() {
-  return (
+  const [balanceData, setBalanceData] = useState<Balance[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchBalance = async () => {
+    try {
+      const result = await axios.get("http://localhost:8000/balance");
+      setBalanceData(result.data);
+    } catch (err) {
+      console.log("Error fetching Data:", err);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    }
+  };
+
+  useEffect(() => {
+    fetchBalance();
+  }, []);
+
+  return loading ? (
+    <Skeleton />
+  ) : (
     <ResponsiveContainer width="100%" height="100%">
       <AreaChart
         width={730}
         height={250}
-        data={balanceHistory}
+        data={balanceData}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
       >
         <defs>

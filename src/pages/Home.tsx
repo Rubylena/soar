@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 import ExpensePieChart from "../components/charts/ExpensesPieChart";
 import WeeklyActivity from "../components/charts/weeklyActivity";
-import BalanceChart from '../components/charts/BalanceChart'
-import CreditCard from "../components/home/CreditCard";
+import BalanceChart from "../components/charts/BalanceChart";
 import Transactions from "../components/home/Transactions";
 import { SetCurrentModule } from "../store/slices/moduleSlice";
 import { useEffect } from "react";
 import QuickTransfer from "../components/home/QuickTransfer";
+import Cards from "../components/home/Cards";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -15,27 +15,21 @@ export default function Home() {
     dispatch(SetCurrentModule("Overview"));
   }, []);
   return (
-    <div className=" bg-white md:bg-transparent px-2 py-7 md:p-0 grid gap-10">
-      <section className="grid gap-7 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+    <div className=" bg-white md:bg-transparent px-5 py-7 md:p-0  flex flex-col gap-7">
+      <section className="lg:grid flex flex-col gap-7 lg:grid-cols-3">
+        <div className="lg:col-span-2  ">
           <div className="pb-5 flex justify-between">
-            <h2 className="text-[#343C6A] font-semibold text-[22px]">
+            <h2 className="text-[#343C6A] font-semibold text-lg md:text-xl">
               My Cards
             </h2>
-            <button className="  cursor-pointer hover:text-blue-500 font-semibold text-[17px] text-[#343C6A">
+            <button className=" cursor-pointer hover:text-blue-500 font-semibold md:text-[17px] text-[#343C6A]">
               See All
             </button>
           </div>
-          <div className=" flex w-full overflow-x-auto gap-5 justify-between">
-            <CreditCard
-              cardBg="bg-[linear-gradient(107.38deg,#5B5A6F_2.61%,#000000_101.2%)]"
-              bottomBg="bg-[linear-gradient(180deg,rgba(255,255,255,0.15)_0%,rgba(255,255,255,0)_100%)]"
-            />
-            <CreditCard cardBg="bg-white" invert={true} showBorder />
-          </div>
+          <Cards/>
         </div>
         <div className="lg:col-span-1">
-          <h2 className="pb-5 text-[#343C6A] text-[22px] font-semibold">
+          <h2 className="pb-5 text-[#343C6A] text-lg md:text-xl font-semibold">
             Recent Transaction
           </h2>
 
@@ -46,7 +40,7 @@ export default function Home() {
       <section className="grid gap-7 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <div className="pb-5 ">
-            <h2 className="text-[#343C6A] font-semibold text-[22px]">
+            <h2 className="text-[#343C6A] font-semibold text-lg md:text-xl">
               Weekly Activity
             </h2>
           </div>
@@ -68,7 +62,7 @@ export default function Home() {
           </div>
         </div>
         <div className="col-span-1">
-          <h2 className="pb-5 text-[#343C6A] text-[22px] font-semibold">
+          <h2 className="pb-5 text-[#343C6A] text-lg md:text-xl font-semibold">
             Expense Statistics
           </h2>
 
@@ -78,10 +72,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grid gap-7 lg:grid-cols-3">
-        <div className="lg:col-span-1">
+      <section className="grid gap-7 lg:grid-cols-5">
+        <div className="lg:col-span-2">
           <div className="pb-5 ">
-            <h2 className="text-gray-800 font-semibold text-[22px]">
+            <h2 className="text-[#343C6A] font-semibold text-lg md:text-xl">
               Quick Transfer
             </h2>
           </div>
@@ -90,8 +84,8 @@ export default function Home() {
             <QuickTransfer />
           </div>
         </div>
-        <div className="lg:col-span-2">
-          <h2 className="pb-5 text-gray-800 text-[22px] font-semibold">
+        <div className="lg:col-span-3">
+          <h2 className="pb-5 text-[#343C6A] text-lg md:text-xl font-semibold">
             Balance History
           </h2>
 
