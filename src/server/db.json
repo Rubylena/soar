@@ -1,0 +1,91 @@
+{
+  "transactions": [
+    {
+      "type": "withdrawal",
+      "amount": "850",
+      "date": "2021-01-28T00:00:00Z",
+      "title": "Deposit from my Card",
+      "bank": "deposit"
+    },
+    {
+      "type": "deposit",
+      "amount": "2,500",
+      "date": "2021-01-25T00:00:00Z",
+      "title": "Deposit Paypal",
+      "bank": "paypal"
+    },
+    {
+      "type": "deposit",
+      "amount": "5,400",
+      "date": "2021-01-21T00:00:00Z",
+      "title": "Jemi Wilson",
+      "bank": "jemi"
+    }
+  ],
+  "balance": [
+    { "month": "Jul", "amount": "0" },
+    { "month": "Aug", "amount": "400" },
+    { "month": "Sep", "amount": "300" },
+    { "month": "Oct", "amount": "750 " },
+    { "month": "Nov", "amount": "200" },
+    { "month": "Dec", "amount": "500" },
+    { "month": "Jan", "amount": "280" }
+  ],
+  "expenses": [
+    { "name": "Entertainment", "value": 30, "color": "#343C6A" },
+    { "name": "Investment", "value": 20, "color": "#396AFF" },
+    { "name": "Others", "value": 35, "color": "#000000" },
+    { "name": "Bill Expense", "value": 15, "color": "#FC7900" }
+  ],
+  "weeklyStats": [
+    {
+      "day": "Sat",
+      "withdraw": 450,
+      "deposit": 250
+    },
+    {
+      "day": "Sun",
+      "withdraw": 350,
+      "deposit": 150
+    },
+    {
+      "day": "Mon",
+      "withdraw": 300,
+      "deposit": 250
+    },
+    {
+      "day": "Tue",
+      "withdraw": 480,
+      "deposit": 380
+    },
+    {
+      "day": "Wed",
+      "withdraw": 120,
+      "deposit": 280
+    },
+    {
+      "day": "Thu",
+      "withdraw": 400,
+      "deposit": 220
+    },
+    {
+      "day": "Fri",
+      "withdraw": 400,
+      "deposit": 350
+    }
+  ],
+  "cardDetails":[
+    {
+      "number": "3778 **** **** 1234",
+      "holder": "Eddy Cusuma",
+      "expiry": "12/22",
+      "balance":"$5,356"
+    },
+    {
+      "number": "3778 **** **** 1234",
+      "holder": "Eddy Cusuma",
+      "expiry": "12/22",
+      "balance": "$5,356"
+    }
+  ]
+}
