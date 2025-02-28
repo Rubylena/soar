@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  imageUrl: "/src/assets/accountowner.jpeg",
+  imageUrl: "",
   name: "Charlene Reed",
   username: "Charlene Reed",
   email: "CharleneReed@gmail.com",

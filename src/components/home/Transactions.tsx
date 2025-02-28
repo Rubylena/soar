@@ -37,7 +37,7 @@ export default function Transactions() {
         <Skeleton />
       ) : (
         <>
-          {transactions.map((transac, i) => (
+          {transactions?.map((transac, i) => (
             <div className="flex items-center gap-5" key={i}>
               <div
                 className={` ${transac.bank === "paypal" && "bg-blue-100"} ${
