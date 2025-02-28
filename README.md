@@ -7,7 +7,16 @@ This project is Soar's frontend assessment implementation of the dashbaord and s
 - **Weekly Statistics**: Withdrawals and deposits per day
 - **Expenses**: Expense categories with values
 
-This data is served using `json-server` and fetched in a frontend application using `axios`.
+This data is served using `json-server` and fetched in this frontend application using `axios`. The server is hosted on [a third-party server](https://my-json-server.typicode.com/)
+
+But you can also run the local server using:
+    ```bash
+   npm run server
+   or
+   pnpm server
+   or
+   yarn server
+   ```
 
 ## Setup Instructions
 
@@ -30,16 +39,6 @@ This data is served using `json-server` and fetched in a frontend application us
    or
    yarn dev
    ```
-
-5. You need to also start the json-server API server: 
-   ```bash
-   npm run server
-   or
-   pnpm server
-   or
-   yarn server
-   ```
-The server must be on before the running the app to get data to appear on the dashboard.
 
 You can now use http://localhost:5173/ to view the application.
 
