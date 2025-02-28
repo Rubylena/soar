@@ -18,8 +18,13 @@ export default function BalanceChart() {
 
   const fetchBalance = async () => {
     try {
-      const result = await axios.get("http://localhost:8000/balance");
-      setBalanceData(result.data);
+      const result = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/balance`
+      );
+      
+      if (typeof result?.data === "object") {
+        setBalanceData(result.data);
+      }
     } catch (err) {
       console.log("Error fetching Data:", err);
     } finally {

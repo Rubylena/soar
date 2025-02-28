@@ -9,8 +9,13 @@ export default function Cards() {
 
   const fetchCardDetails = async () => {
     try {
-      const result = await axios.get("http://localhost:8000/cardDetails");
-      setDetails(result.data);
+      const result = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/cardDetails`
+      );
+
+      if (typeof result?.data === "object") {
+        setDetails(result.data);
+      }
     } catch (err) {
       console.log("Error fetching transactions:", err);
     } finally {

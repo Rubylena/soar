@@ -18,8 +18,13 @@ export default function WeeklyActivity() {
 
   const fetchActivities = async () => {
     try {
-      const result = await axios.get("http://localhost:8000/weeklyStats");
-      setWeeklyData(result.data);
+      const result = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/weeklyStats`
+      );
+
+      if (typeof result?.data === "object") {
+        setWeeklyData(result.data);
+      }
     } catch (err) {
       console.log("Error fetching Data:", err);
     } finally {
