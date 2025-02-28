@@ -1,0 +1,1 @@
+web: npm install --no-static --omit=dev && npm run server
