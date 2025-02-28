@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
 import { updateUser } from "../store/slices/userSlice";
 import { toast } from "react-toastify";
 import { UserInfo } from "../utils/types";
+import imageUrl from "../assets/accountowner.jpeg"
 
 const options = [
   {
@@ -27,7 +28,7 @@ export default function Settings() {
   const dispatch = useAppDispatch();
 
   const [activeTab, setActiveTab] = useState("Edit Profile");
-  const [image, setImage] = useState<string>(userData.imageUrl);
+  const [image, setImage] = useState<string>(imageUrl);
 
   const handleImageChange = (src: string) => {
     setImage(src);

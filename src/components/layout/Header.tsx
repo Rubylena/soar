@@ -5,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router";
 import { useAppSelector } from "../../store/hooks/hooks";
+import imageUrl from "../../assets/accountowner.jpeg";
 
 export default function Header({
   handleDrawerToggle,
@@ -12,7 +13,6 @@ export default function Header({
   handleDrawerToggle: () => void;
 }) {
   const module = useAppSelector((state) => state.module.currentModule);
-  const { imageUrl } = useAppSelector((state) => state.user);
 
   return (
     <div className=" w-full gap-3 flex flex-col md:flex-row it md:items-center justify-start md:justify-between">

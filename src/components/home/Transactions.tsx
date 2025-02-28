@@ -37,7 +37,7 @@ export default function Transactions() {
         <Skeleton />
       ) : (
         <>
-          {transactions.map((transac, i) => (
+          {transactions?.map((transac, i) => (
             <div className="flex items-center gap-5" key={i}>
               <div
                 className={` ${transac.bank === "paypal" && "bg-blue-100"} ${
@@ -45,7 +45,7 @@ export default function Transactions() {
                 } bg-amber-100 grid place-content-center flex-shrink-0 rounded-full size-[55px]`}
               >
                 <img
-                  src={`/src/assets/icons/overview/${transac.bank}.png`}
+                  src={`/assets/icons/overview/${transac.bank}.png`}
                   alt="deposit"
                   className="size-7"
                 />
