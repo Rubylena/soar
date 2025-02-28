@@ -7,11 +7,16 @@ import { Expenses } from "../../utils/types";
 export default function ExpensePieChart() {
   const [expenses, setExpenses] = useState<Expenses[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   const fetchExpenses = async () => {
     try {
-      const result = await axios.get("http://localhost:8000/expenses");
-      setExpenses(result.data);
+      const result = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/expenses`
+      );
+
+      if (typeof result?.data === "object") {
+        setExpenses(result.data);
+      }
     } catch (err) {
       console.log("Error fetching Data:", err);
     } finally {

@@ -4,7 +4,7 @@ import Skeleton from "../reusables/Skeleton";
 import { Transaction } from "../../utils/types";
 
 export default function Transactions() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
   const formatDate = (val: Date) => {
     return new Date(val).toLocaleDateString("en-GB", {
@@ -16,8 +16,13 @@ export default function Transactions() {
 
   const fetchTransactions = async () => {
     try {
-      const result = await axios.get("http://localhost:8000/transactions");
-      setTransactions(result.data);
+      const result = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/transactions`
+      );
+
+      if (typeof result?.data === "object") {
+        setTransactionsData(result.data);
+      }
     } catch (err) {
       console.log("Error fetching transactions:", err);
     } finally {
@@ -37,7 +42,7 @@ export default function Transactions() {
         <Skeleton />
       ) : (
         <>
-          {transactions?.map((transac, i) => (
+          {transactionsData?.map((transac, i) => (
             <div className="flex items-center gap-5" key={i}>
               <div
                 className={` ${transac.bank === "paypal" && "bg-blue-100"} ${
